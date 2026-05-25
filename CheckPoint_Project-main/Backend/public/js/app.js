@@ -207,3 +207,69 @@ function abrirModalSaldo(event) {
 function fecharModalSaldo() {
     document.getElementById("modalSaldo").classList.remove("mostrar-modal");
 }
+window.addEventListener('load', () => {
+    const paginaAtual = window.location.pathname;
+    verificarSessao();
+    
+    if (paginaAtual.includes('menu_inicial')) {
+        carregarDadosSemaforo();
+        atualizarContagemRoles();
+    }
+});
+
+function verificarSessao() {
+    fetch('/users/sessao')
+        .then(res => res.json())
+        .then(data => {
+            if (data.logado) {
+                const elNome = document.getElementById('nome-usuario');
+                if (elNome) elNome.innerText = data.usuario.Nick;
+                
+                const elSaldo = document.getElementById('textoSaldo');
+                if (elSaldo && data.usuario.Valor) {
+                    elSaldo.innerText = parseFloat(data.usuario.Valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                }
+            } else if (!window.location.pathname.includes('index')) {
+                window.location.href = 'index.html';
+            }
+        });
+}
+
+function alternarMenu(event) {
+    if (event) event.stopPropagation();
+    document.getElementById("menuUsuario").classList.toggle("mostrar");
+}
+
+window.onclick = function(e) {
+    if (!e.target.closest('.area-usuario')) {
+        const m = document.getElementById("menuUsuario");
+        if (m) m.classList.remove('mostrar');
+    }
+}
+function atualizarSemaforo(porcentagem) {
+    const luzVermelha = document.getElementById("luz-vermelha");
+    const luzAmarela = document.getElementById("luz-amarela");
+    const luzVerde = document.getElementById("luz-verde");
+    const textoMsg = document.getElementById("texto-status");
+    const imgBoneco = document.querySelector(".img-status-boneco");
+
+    // Limpa classes
+    [luzVermelha, luzAmarela, luzVerde].forEach(l => l.classList.remove("aceso"));
+
+    if (porcentagem < 80) {
+        luzVerde.classList.add("aceso");
+        textoMsg.innerText = "Tudo tranquilo! Gastos sob controle.";
+        textoMsg.className = "msg-verde";
+        // imgBoneco.src = "/img/personagem-feliz.png"; 
+    } else if (porcentagem < 100) {
+        luzAmarela.classList.add("aceso");
+        textoMsg.innerText = "Atenção! Você está perto do limite.";
+        textoMsg.className = "msg-amarela";
+        // imgBoneco.src = "/img/personagem-alerta.png";
+    } else {
+        luzVermelha.classList.add("aceso");
+        textoMsg.innerText = "Cuidado! Orçamento estourado!";
+        textoMsg.className = "msg-vermelha";
+        // imgBoneco.src = "/img/personagem-desespero.png";
+    }
+}

@@ -92,21 +92,26 @@
     </div>
     
 
-    <footer class="rodape">
-        <div class="container-rodape-interno">
+    <footer class="rodape-status">
+        <div class="container-status-caixa">
             
-            <div class="lado-personagem">
-                <img src="/img/logo.png" alt="Personagem" class="img-personagem">
+            <!-- Área do Personagem com um brilho de fundo -->
+            <div class="personagem-wrapper">
+                <div class="brilho-aura"></div>
+                <img src="/img/logo.png" alt="Status" class="img-status-boneco">
             </div>
 
-            <div class="semaforo-css">
-                <div id="luz-vermelha" class="luz vermelha"></div>
-                <div id="luz-amarela" class="luz amarela"></div>
-                <div id="luz-verde" class="luz verde aceso"></div>
+            <!-- Semáforo Estilizado -->
+            <div class="semaforo-caixa">
+                <div id="luz-vermelha" class="luz-moderna vermelha"></div>
+                <div id="luz-amarela" class="luz-moderna amarela"></div>
+                <div id="luz-verde" class="luz-moderna verde"></div>
             </div>
 
-            <div class="lado-mensagem">
-                <p id="texto-status" class="msg-verde">Tudo tranquilo! Gastos baixos.</p>
+            <!-- Texto com Tipografia Melhorada -->
+            <div class="status-info">
+                <span class="label-status">STATUS FINANCEIRO</span>
+                <h2 id="texto-status" class="msg-vermelha">Cuidado! Orçamento estourado!</h2>
             </div>
 
         </div>

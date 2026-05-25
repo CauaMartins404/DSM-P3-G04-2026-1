@@ -1,323 +1,215 @@
-/* --- BANNER (SEÇÃO DE BOAS VINDAS) --- */
-.secao-boas-vindas {
-    width: 100%;
-    height: 208px;
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../imagens/fundo.jpg');
-    background-size: cover;
-    background-position: center;
-    
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; 
-    text-align: center;
+/* ===== CONFIG GLOBAL ===== */
+:root {
+    --roxo: #8a2dff;
+    --roxo-escuro: #110833;
+    --glass: rgba(255,255,255,0.05);
+    --borda: rgba(255,255,255,0.1);
+
+    --verde: #00ff88;
+    --amarelo: #ffcc00;
+    --vermelho: #ff3b3b;
 }
 
-.conteudo-banner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-top: 40px; 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
 }
 
-.conteudo-banner h1 {
-    font-size: 1.4rem;
-    text-shadow: 2px 2px 4px black;
-    letter-spacing: 0.5px;
-    margin: 0;
+body{
+    background:
+        linear-gradient(rgba(0,0,0,.75), rgba(13,6,32,.95)),
+        url('../img/fundo.jpg') center/cover fixed;
+    color:white;
+    min-height:100vh;
 }
 
-.linha-inferior {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+/* ===== HEADER ===== */
+.barra-superior{
+    height:70px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.5);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--borda);
 }
 
-.linha-inferior a {
-    text-decoration: none;
+.container-header{
+    width:100%;
+    max-width:1200px;
+    padding:0 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.botao-criar-role {
-    background-color: #0B077EF2;
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    font-size: 0.9rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    transition: all 0.3s ease;
-    
+/* ===== BANNER ===== */
+.secao-boas-vindas{
+    text-align:center;
+    padding:60px 20px;
 }
 
-.botao-criar-role:hover {
-    background-color: #1e15b3;
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(30, 21, 179, 0.8);
+.conteudo-banner{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:25px;
 }
 
-/* --- CARDS (ÁREA PRINCIPAL) --- */
-.conteudo-principal {
-    display: flex;
-    justify-content: center;
-    padding-top: 80px; 
-    padding-bottom: 50px;
-    flex-direction: column;
-    align-items: center;
+.conteudo-banner h1{
+    font-size:2rem;
+    font-weight:900;
+    line-height:1.2;
+    max-width:800px;
 }
 
-.container-cards {
-    display: flex;
-    justify-content: center;
-    gap: 150px; 
-    width: 100%;
-    max-width: 1200px;
+/* ===== BOTÕES ===== */
+.botao-criar-role,
+.botao-card{
+    border:none;
+    cursor:pointer;
+    transition:.3s;
 }
 
-.card-informativo {
-    background-color: #33219A;
-    width: 400px;
-    height: 220px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    border-radius: 2px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+.botao-criar-role{
+    background:linear-gradient(135deg,var(--roxo),#4a0bc7);
+    color:white;
+    padding:15px 40px;
+    border-radius:50px;
+    font-weight:bold;
+    box-shadow:0 0 20px rgba(138,45,255,.4);
 }
 
-.card-informativo h2 {
-    font-size: 1.3rem;
-    font-weight: normal;
+.botao-criar-role:hover{
+    transform:scale(1.05);
 }
 
-.valor-destaque {
-    font-size: 2.2rem;
-    font-weight: bold;
-    margin: 5px 0;
+.botao-card{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    background:var(--glass);
+    border:1px solid var(--borda);
+    color:white;
 }
 
-.botao-card {
-    background-color: #170B5D;
-    color: white;
-    border: none;
-    padding: 10px 0;
-    width: 70%;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-    transition: all 0.3s ease;
+.botao-card:hover{
+    background:white;
+    color:black;
 }
 
-.botao-card:hover {
-    background-color: #482BC9;
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(72, 43, 201, 0.6);
+/* ===== CARDS ===== */
+.container-cards{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+    padding:20px;
 }
 
-/* --- SEÇÃO STATUS DOS GASTOS --- */
-.secao-status-gastos {
-    display: flex;
-    justify-content: center;
-    padding: 40px 20px;
-    margin-top: 50px;
+.card-informativo{
+    width:350px;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+
+    background:var(--glass);
+    backdrop-filter:blur(15px);
+    border:1px solid var(--borda);
+
+    transition:.3s;
 }
 
-.container-status {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    max-width: 800px;
-    width: 100%;
+.card-informativo:hover{
+    transform:translateY(-5px);
 }
 
-.imagem-status img {
-    max-width: 250px;
-    height: auto;
-    display: block;
+.card-informativo h2{
+    font-size:.8rem;
+    letter-spacing:2px;
+    color:#aaa;
+    text-transform:uppercase;
 }
 
-.texto-status h3 {
-    margin-top: 0;
-    color: #333;
-    margin-bottom: 20px;
+.valor-destaque{
+    font-size:3rem;
+    font-weight:900;
+    margin:15px 0;
 }
 
-.texto-status ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+/* ===== RODAPÉ / SEMÁFORO ===== */
+.rodape-status{
+    display:flex;
+    justify-content:center;
+    padding:40px 0;
 }
 
-.texto-status li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #333; 
+.container-status-caixa{
+    display:flex;
+    align-items:center;
+    gap:30px;
+
+    padding:20px 40px;
+    border-radius:30px;
+
+    background:rgba(0,0,0,.3);
+    backdrop-filter:blur(10px);
 }
 
-/* Pop Up Gastos*/
-.modal-fundo {
-    display: none; 
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
+.semaforo-caixa{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+
+    padding:15px;
+    border-radius:50px;
+    background:black;
 }
 
-.modal-caixa {
-    background-color: #0B077E; 
-    padding: 30px;
-    width: 350px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+.luz-moderna{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:#111;
 }
 
-.modal-caixa h3 {
-    color: white;
-    font-size: 1.2rem;
-    margin: 0;
-    font-family: 'Times New Roman', serif;
+.vermelha.aceso{
+    background:var(--vermelho);
+    box-shadow:0 0 20px var(--vermelho);
 }
 
-
-#input-novo-saldo {
-    width: 100%;
-    height: 70px !important; 
-    font-size: 2rem !important;
-    padding: 0 20px;
-    border-radius: 5px;
-    border: 2px solid white; 
-    font-weight: bold;
-    color: #333;
+.amarela.aceso{
+    background:var(--amarelo);
+    box-shadow:0 0 20px var(--amarelo);
 }
 
-.botoes-modal {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
+.verde.aceso{
+    background:var(--verde);
+    box-shadow:0 0 20px var(--verde);
 }
 
-.btn-continuar {
-    background-color: #110833; 
-    color: white;
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 10px;
-    flex: 1;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: 'Times New Roman', serif;
+/* ===== TEXTO STATUS ===== */
+.label-status{
+    font-size:.7rem;
+    letter-spacing:2px;
+    color:var(--roxo);
+    font-weight:800;
 }
 
-.btn-continuar:hover { background-color: #1f0e5c; }
-
-.btn-voltar-modal {
-    background-color: transparent;
-    border: 1px solid white;
-    color: white;
-    padding: 10px;
-    flex: 1;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: 'Times New Roman', serif;
+#texto-status{
+    font-size:1.5rem;
+    font-weight:800;
 }
 
-.btn-voltar-modal:hover { background-color: rgba(255,255,255,0.1); }
-
-
-.mostrar-modal {
-    display: flex !important;
+/* ===== PERSONAGEM ===== */
+.img-status-boneco{
+    width:100px;
+    animation:flutuar 3s infinite ease-in-out;
 }
 
-/*Semafaro */
-.container-rodape-interno {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px; 
+@keyframes flutuar{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-8px); }
 }
-
-
-.img-personagem {
-    width: 150px; 
-    height: auto;
-}
-
-
-.semaforo-css {
-    background-color: #000; 
-    padding: 15px;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column; 
-    gap: 15px;
-    border: 2px solid #333;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
-}
-
-
-.luz {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%; 
-    background-color: #333; 
-    transition: all 0.3s; 
-    opacity: 0.3; 
-}
-
-.vermelha.aceso {
-    background-color: #ff0000;
-    box-shadow: 0 0 20px #ff0000; 
-    opacity: 1;
-}
-
-.amarela.aceso {
-    background-color: #ffcc00;
-    box-shadow: 0 0 20px #ffcc00;
-    opacity: 1;
-}
-
-.verde.aceso {
-    background-color: #00ff00;
-    box-shadow: 0 0 20px #00ff00;
-    opacity: 1;
-}
-
-.lado-mensagem {
-    width: 200px; 
-    text-align: left;
-}
-
-#texto-status {
-    font-size: 1.2rem;
-    font-weight: bold;
-    font-family: 'Times New Roman', serif;
-    transition: color 0.3s; 
-}
-
-
-.msg-verde { color: #00ff00; text-shadow: 0 0 5px rgba(0,255,0,0.3); }
-.msg-amarela { color: #ffcc00; text-shadow: 0 0 5px rgba(255,204,0,0.3); }
-.msg-vermelha { color: #ff0000; text-shadow: 0 0 5px rgba(255,0,0,0.3); }
